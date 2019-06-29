@@ -85,10 +85,15 @@ class TicketController extends Controller
 
     public function checkTicketStatus($ticketnumber)
     {
-        $res['response'] = 'GONE';
+        $res['response'] = 'Ticket Number Not Exists';
         $data = Ticket::select('is_redeem')->where('ticket_number',$ticketnumber)->first();
-        if($data->is_redeem == '1') {
-            $res['response'] = 'OK';
+        if($data) {
+            if($data->is_redeem == '1') {
+                $res['response'] = 'GONE';
+            }
+            if($data->is_redeem == '0') {
+                $res['response'] = 'Ok';
+            }
         }
         return response()->json($res);
     }
