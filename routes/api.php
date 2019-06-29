@@ -22,4 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::get('event/{event}', 'EventController@show');
 Route::resource('events', 'EventController');
 Route::get('events/{event}/count', 'EventController@eventTicketCount');
+Route::get('events/{event}/add/{ticketcount}', 'EventController@addTickets');
 Route::get('redeem/{ticketnumber}', 'TicketController@checkTicketStatus');

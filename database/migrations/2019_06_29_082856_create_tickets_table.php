@@ -21,9 +21,9 @@ class CreateTicketsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('tickets', function (Blueprint $table) {
-            $table->foreign('event_id')->references('id')->on('events');
-        });
+        // Schema::table('tickets', function (Blueprint $table) {
+        //     $table->foreign('event_id')->references('id')->on('events');
+        // });
     }
 
     /**

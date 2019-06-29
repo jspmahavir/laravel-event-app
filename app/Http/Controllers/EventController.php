@@ -116,4 +116,15 @@ class EventController extends Controller
         $data['eventTicketCount'] = Ticket::where('event_id',$event->id)->where('is_redeem',0)->count();
         return response()->json($data);
     }
+
+    public function addTickets($eventId,$ticketcount)
+    {
+        for($i = 0; $i < $ticketcount; $i++) {
+            $ticketData = Ticket::create([
+                'event_id' => $eventId,
+                'ticket_number' => $this->randomTicketNumber(),
+            ]);
+        }
+        return response()->json('Successfully added');
+    }
 }
